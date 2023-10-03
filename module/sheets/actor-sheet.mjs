@@ -9,8 +9,8 @@ export class TechnoirActorSheet extends ActorSheet {
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["techoir", "sheet", "actor"],
-      template: "systems/techoir/templates/actor/actor-sheet.html",
+      classes: ["technoir", "sheet", "actor"],
+      template: "systems/technoir/templates/actor/actor-sheet.html",
       width: 600,
       height: 600,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
@@ -19,7 +19,7 @@ export class TechnoirActorSheet extends ActorSheet {
 
   /** @override */
   get template() {
-    return `systems/techoir/templates/actor/actor-${this.actor.data.type}-sheet.html`;
+    return `systems/technoir/templates/actor/actor-${this.actor.data.type}-sheet.html`;
   }
 
   /* -------------------------------------------- */

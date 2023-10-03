@@ -7,8 +7,8 @@
   return loadTemplates([
 
     // Actor partials.
-    "systems/techoir/templates/actor/parts/actor-features.html",
-    "systems/techoir/templates/actor/parts/actor-items.html",
-    "systems/techoir/templates/actor/parts/actor-effects.html",
+    "systems/technoir/templates/actor/parts/actor-features.html",
+    "systems/technoir/templates/actor/parts/actor-items.html",
+    "systems/technoir/templates/actor/parts/actor-effects.html",
   ]);
 };

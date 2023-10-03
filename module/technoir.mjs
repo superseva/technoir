@@ -6,7 +6,7 @@ import { TechnoirActorSheet } from "./sheets/actor-sheet.mjs";
 import { TechnoirItemSheet } from "./sheets/item-sheet.mjs";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
-import { TECHOIR } from "./helpers/config.mjs";
+import { TECHNOIR } from "./helpers/config.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -16,14 +16,14 @@ Hooks.once('init', async function() {
 
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
-  game.techoir = {
+  game.technoir = {
     TechnoirActor,
     TechnoirItem,
     rollItemMacro
   };
 
   // Add custom constants for configuration.
-  CONFIG.TECHOIR = TECHOIR;
+  CONFIG.TECHNOIR = TECHNOIR;
 
   /**
    * Set an initiative formula for the system
@@ -40,9 +40,9 @@ Hooks.once('init', async function() {
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("techoir", TechnoirActorSheet, { makeDefault: true });
+  Actors.registerSheet("technoir", TechnoirActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("techoir", TechnoirItemSheet, { makeDefault: true });
+  Items.registerSheet("technoir", TechnoirItemSheet, { makeDefault: true });
 
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();
@@ -93,7 +93,7 @@ async function createItemMacro(data, slot) {
   const item = data.data;
 
   // Create the macro command
-  const command = `game.techoir.rollItemMacro("${item.name}");`;
+  const command = `game.technoir.rollItemMacro("${item.name}");`;
   let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
   if (!macro) {
     macro = await Macro.create({
@@ -101,7 +101,7 @@ async function createItemMacro(data, slot) {
       type: "script",
       img: item.img,
       command: command,
-      flags: { "techoir.itemMacro": true }
+      flags: { "technoir.itemMacro": true }
     });
   }
   game.user.assignHotbarMacro(macro, slot);

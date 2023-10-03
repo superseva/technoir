@@ -1,7 +1,7 @@
-export const TECHOIR = {};
+export const TECHNOIR = {};
 
 // Define constants here, such as:
-TECHOIR.foobar = {
-  'bas': 'TECHOIR.bas',
-  'bar': 'TECHOIR.bar'
+TECHNOIR.foobar = {
+  'bas': 'TECHNOIR.bas',
+  'bar': 'TECHNOIR.bar'
 };
