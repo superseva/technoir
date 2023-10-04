@@ -20,7 +20,8 @@ export class TechnoirItem extends Item {
     // If present, return the actor's roll data.
     if ( !this.actor ) return null;
     const rollData = this.actor.getRollData();
-    rollData.item = foundry.utils.deepClone(this.data.data);
+    // Grab the item's system data as well.
+    rollData.item = foundry.utils.deepClone(this.system);
 
     return rollData;
   }
@@ -31,7 +32,7 @@ export class TechnoirItem extends Item {
    * @private
    */
   async roll() {
-    const item = this.data;
+    const item = this;
 
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.actor });
@@ -39,12 +40,12 @@ export class TechnoirItem extends Item {
     const label = `[${item.type}] ${item.name}`;
 
     // If there's no roll data, send a chat message.
-    if (!this.data.data.formula) {
+    if (!this.system.formula) {
       ChatMessage.create({
         speaker: speaker,
         rollMode: rollMode,
         flavor: label,
-        content: item.data.description ?? ''
+        content: item.system.description ?? ''
       });
     }
     // Otherwise, create a roll and send a chat message from it.
@@ -53,7 +54,9 @@ export class TechnoirItem extends Item {
       const rollData = this.getRollData();
 
       // Invoke the roll and submit it to chat.
-      const roll = new Roll(rollData.item.formula, rollData).roll();
+      const roll = new Roll(rollData.item.formula, rollData);
+      // If you need to store the value first, uncomment the next line.
+      // let result = await roll.roll({async: true});
       roll.toMessage({
         speaker: speaker,
         rollMode: rollMode,

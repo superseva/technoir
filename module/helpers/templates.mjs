@@ -9,6 +9,7 @@
     // Actor partials.
     "systems/technoir/templates/actor/parts/actor-features.html",
     "systems/technoir/templates/actor/parts/actor-items.html",
+    "systems/technoir/templates/actor/parts/actor-spells.html",
     "systems/technoir/templates/actor/parts/actor-effects.html",
   ]);
 };

@@ -19,7 +19,7 @@ export class TechnoirActorSheet extends ActorSheet {
 
   /** @override */
   get template() {
-    return `systems/technoir/templates/actor/actor-${this.actor.data.type}-sheet.html`;
+    return `systems/technoir/templates/actor/actor-${this.actor.type}-sheet.html`;
   }
 
   /* -------------------------------------------- */
@@ -33,10 +33,10 @@ export class TechnoirActorSheet extends ActorSheet {
     const context = super.getData();
 
     // Use a safe clone of the actor data for further operations.
-    const actorData = context.actor.data;
+    const actorData = this.actor.toObject(false);
 
     // Add the actor's data to context.data for easier access, as well as flags.
-    context.data = actorData.data;
+    context.system = actorData.system;
     context.flags = actorData.flags;
 
     // Prepare character data and items.
@@ -67,6 +67,10 @@ export class TechnoirActorSheet extends ActorSheet {
    * @return {undefined}
    */
   _prepareCharacterData(context) {
+    // Handle ability scores.
+    for (let [k, v] of Object.entries(context.system.abilities)) {
+      v.label = game.i18n.localize(CONFIG.BOILERPLATE.abilities[k]) ?? k;
+    }
   }
 
   /**
@@ -80,6 +84,18 @@ export class TechnoirActorSheet extends ActorSheet {
     // Initialize containers.
     const gear = [];
     const features = [];
+    const spells = {
+      0: [],
+      1: [],
+      2: [],
+      3: [],
+      4: [],
+      5: [],
+      6: [],
+      7: [],
+      8: [],
+      9: []
+    };
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
@@ -92,12 +108,19 @@ export class TechnoirActorSheet extends ActorSheet {
       else if (i.type === 'feature') {
         features.push(i);
       }
+      // Append to spells.
+      else if (i.type === 'spell') {
+        if (i.system.spellLevel != undefined) {
+          spells[i.system.spellLevel].push(i);
+        }
+      }
     }
 
     // Assign and return
     context.gear = gear;
     context.features = features;
-   }
+    context.spells = spells;
+  }
 
   /* -------------------------------------------- */
 
@@ -134,7 +157,7 @@ export class TechnoirActorSheet extends ActorSheet {
     html.find('.rollable').click(this._onRoll.bind(this));
 
     // Drag events for macros.
-    if (this.actor.owner) {
+    if (this.actor.isOwner) {
       let handler = ev => this._onDragStart(ev);
       html.find('li.item').each((i, li) => {
         if (li.classList.contains("inventory-header")) return;
@@ -162,10 +185,10 @@ export class TechnoirActorSheet extends ActorSheet {
     const itemData = {
       name: name,
       type: type,
-      data: data
+      system: data
     };
     // Remove the type from the dataset since it's in the itemData.type prop.
-    delete itemData.data["type"];
+    delete itemData.system["type"];
 
     // Finally, create the item!
     return await Item.create(itemData, {parent: this.actor});
@@ -192,8 +215,8 @@ export class TechnoirActorSheet extends ActorSheet {
 
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = dataset.label ? `[roll] ${dataset.label}` : '';
-      let roll = new Roll(dataset.roll, this.actor.getRollData()).roll();
+      let label = dataset.label ? `[ability] ${dataset.label}` : '';
+      let roll = new Roll(dataset.roll, this.actor.getRollData());
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label,
