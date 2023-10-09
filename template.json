@@ -5,6 +5,8 @@
       "npc"
     ],
     "character": {
+      "diceCharged":3,
+      "diceDischarged":0,
       "verbs": {
         "coax": {
           "value": 1,

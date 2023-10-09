@@ -13,7 +13,6 @@ export class TechnoirRollDialog extends Dialog {
     }
 
     activateListeners(html) {
-
         super.activateListeners(html);
 
         html.on('click', '.roll', (event) => {
@@ -28,11 +27,9 @@ export class TechnoirRollDialog extends Dialog {
                 actor: this.actor,
                 item: this.item })
         });
-
     }
 
     static async createDialog({ rollName = "Technoir Roll", dieAction = 1, diePush = 0, dieHurt = 0, actor = null, item = null } = {}) {
-
         let dialogData = {}
         dialogData.rollName = rollName;
         dialogData.dieAction = dieAction;

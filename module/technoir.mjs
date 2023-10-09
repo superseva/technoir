@@ -1,5 +1,5 @@
 // Import document classes.
-import { TechnoirActor } from "./documents/actor.mjs";
+import { TechnoirActor, TechnoirUser } from "./documents/actor.mjs";
 import { TechnoirItem } from "./documents/item.mjs";
 // Import sheet classes.
 import { TechnoirActorSheet } from "./sheets/actor-sheet.mjs";
@@ -11,6 +11,8 @@ import { DieAction, DiePush, DieHurt } from "./roller/Dice.js";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { TECHNOIR } from "./helpers/config.mjs";
+
+import {TechnoirHooks} from "./helpers/technoir-hooks.mjs"
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -25,7 +27,8 @@ Hooks.once('init', async function() {
     TechnoirItem,
     rollItemMacro,
     TechnoirRoller,
-    TechnoirRollDialog
+    TechnoirRollDialog,
+    TechnoirHooks
   };
 
   // Add custom constants for configuration.
@@ -43,6 +46,7 @@ Hooks.once('init', async function() {
   // Define custom Document classes
   CONFIG.Actor.documentClass = TechnoirActor;
   CONFIG.Item.documentClass = TechnoirItem;
+  CONFIG.User.documentClass = TechnoirUser;
 
   // Define Dice
   CONFIG.Dice.terms["a"] = DieAction;
@@ -83,8 +87,43 @@ Handlebars.registerHelper('toLowerCase', function(str) {
 /* -------------------------------------------- */
 
 Hooks.once("ready", async function() {
+  Hooks.on('getUserContextOptions', TechnoirHooks.onGetUserContextOptions);
+  Hooks.on('renderPlayerList', TechnoirHooks.onRenderPlayerList);
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(data, slot));
+});
+
+/* -------------------------------------------- */
+/*  Chat Message render Hook                    */
+/* -------------------------------------------- */
+
+Hooks.on('renderChatMessage', (message, html, data) => {
+  /* GIVE BUTTON --------------------------------- */
+  let giveBtn = html.find('.give-button');
+  if (giveBtn.length > 0) {
+    giveBtn[0].setAttribute('data-messageId', message.id);
+    giveBtn.click((el) => {
+      let selectedDiceForReroll = html.find('.selected');
+      if (!selectedDiceForReroll.length) {
+        ui.notifications.warn('Select Dice you want to Reroll');
+        return;
+    }
+      console.warn(`GIVE`)
+    })
+  }
+  /* DIE BUTTON --------------------------------- */
+  html.find('.tn-die-push').click((el) => {
+    if ($(el.currentTarget).hasClass('canceled'))
+    return;
+    if ($(el.currentTarget).hasClass('selected')) {
+        $(el.currentTarget).removeClass('selected');
+    } else {
+        $(el.currentTarget).addClass('selected')
+    }
+});
+
+
+
 });
 
 /* -------------------------------------------- */
@@ -146,3 +185,5 @@ function rollItemMacro(itemUuid) {
     item.roll();
   });
 }
+
+

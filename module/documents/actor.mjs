@@ -109,3 +109,27 @@ export class TechnoirActor extends Actor {
   }
 
 }
+
+export class TechnoirUser extends User {
+  // Handle push dice
+
+  get pushDice() {
+      // TODO make charged and discharged
+      if (this.isGM) {
+          return this.getFlag('technoir', 'pushDice') ?? 0;
+      }
+      else if (this.character) {
+          return this.character.pushDice;
+      }
+      return 0;
+  }
+
+  async addDice(){
+      if (this.isGM) {
+          
+      }
+      if (this.character){
+
+      }
+  }
+}

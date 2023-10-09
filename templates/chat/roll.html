@@ -1,17 +1,21 @@
-<div class="flexrow">
-    {{#each actionDice as |die|}}
-    <p class="tn-die tn-die-action {{#if die.canceled}}canceled{{/if}} {{#if die.success}}success{{/if}}">{{die.result}}</p>
-    {{/each}}
-</div>
-<div class="flexrow">
-    {{#each pushDice as |die|}}
-    <p class="tn-die tn-die-push {{#if die.canceled}}canceled{{/if}} {{#if die.success}}success{{/if}}">{{die.result}}</p>
-    {{/each}}
-</div>
-<div class="flexrow">
-    {{#each hurtDice as |die|}}
-    <p class="tn-die tn-die-hurt {{#if die.canceled}}canceled{{/if}}">{{die.result}}</p>
-    {{/each}}
-</div>
+<div class="technoir-chat-msg">
+    <div class="flexrow">
+        {{#each actionDice as |die|}}
+        <p class="tn-die tn-die-action {{#if die.canceled}}canceled{{/if}} {{#if die.success}}success{{/if}}">{{die.result}}</p>
+        {{/each}}
+    </div>
+    <div class="flexrow">
+        {{#each pushDice as |die|}}
+        <p class="tn-die tn-die-push {{#if die.canceled}}canceled{{/if}} {{#if die.success}}success{{/if}}">{{die.result}}</p>
+        {{/each}}
+    </div>
+    <div class="flexrow">
+        {{#each hurtDice as |die|}}
+        <p class="tn-die tn-die-hurt {{#if die.canceled}}canceled{{/if}}">{{die.result}}</p>
+        {{/each}}
+    </div>
 
-<p>RESULT: {{result}}</p>
+    <h2 class="result">RESULT: {{result}}</h2>
+
+    <button class="give-button">Give Selected Push Dice to GM</button>
+</div>

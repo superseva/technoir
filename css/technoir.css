@@ -18,6 +18,7 @@
   text-align: center;
   justify-content: center;
   align-items: center;
+  border-radius: 0.33em;
   margin: 0.1em;
 }
 
@@ -29,6 +30,7 @@
 .tn-die.tn-die-push {
   color: white;
   background-color: black;
+  cursor: pointer;
 }
 
 .tn-die.tn-die-hurt {
@@ -38,12 +40,36 @@
 
 .tn-die.canceled {
   text-decoration: line-through;
-  opacity: 0.3;
+  opacity: 0.15;
+  cursor: auto;
 }
 
 .tn-die.success {
-  color: white;
-  background-color: green;
+  border: 2px solid green;
+}
+
+.tn-die.selected {
+  animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+.technoir-chat-msg .result {
+  color: black;
+  border: none;
 }
 
 .grid,
@@ -278,7 +304,8 @@
   border-bottom: 0;
 }
 
-.technoir .sheet-header h1.charname input {
+.technoir .sheet-header h1.charname ac2d20-chat-message
+input {
   width: 100%;
   height: 100%;
   margin: 0;
