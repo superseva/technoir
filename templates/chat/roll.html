@@ -1,11 +1,11 @@
 <div class="flexrow">
     {{#each actionDice as |die|}}
-    <p class="tn-die tn-die-action {{#if die.canceled}}canceled{{/if}}">{{die.result}}</p>
+    <p class="tn-die tn-die-action {{#if die.canceled}}canceled{{/if}} {{#if die.success}}success{{/if}}">{{die.result}}</p>
     {{/each}}
 </div>
 <div class="flexrow">
     {{#each pushDice as |die|}}
-    <p class="tn-die tn-die-push {{#if die.canceled}}canceled{{/if}}">{{die.result}}</p>
+    <p class="tn-die tn-die-push {{#if die.canceled}}canceled{{/if}} {{#if die.success}}success{{/if}}">{{die.result}}</p>
     {{/each}}
 </div>
 <div class="flexrow">

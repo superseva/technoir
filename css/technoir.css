@@ -41,6 +41,11 @@
   opacity: 0.3;
 }
 
+.tn-die.success {
+  color: white;
+  background-color: green;
+}
+
 .grid,
 .grid-2col {
   display: grid;

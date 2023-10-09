@@ -42,6 +42,12 @@ export class TechnoirRoller {
         let leftoverDiceValues = [...actionDice.filter(i=>!i.canceled), ...pushDice.filter(i=>!i.canceled)].map(r=>r.result);
         leftoverDiceValues.push(0) // add 0 as a value if everything else gets canceled.
         let result = Math.max(...leftoverDiceValues);
+
+        // Mark success dice
+        [...pushDice, ...actionDice].forEach(d=>{
+            if(d.result==result) d.success=true;
+        })
+
         let occurances = -1; // start at -1 sp the first found doesn't count
         leftoverDiceValues.forEach(i=>{
             if (i==result) occurances++
