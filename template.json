@@ -1,73 +1,187 @@
 {
   "Actor": {
-    "types": ["character", "npc"],
-    "templates": {
-      "base": {
-        "health": {
-          "value": 10,
-          "min": 0,
-          "max": 10
-        },
-        "power": {
-          "value": 5,
-          "min": 0,
-          "max": 5
-        },
-        "biography": ""
-      }
-    },
+    "types": [
+      "character",
+      "npc"
+    ],
     "character": {
-      "templates": ["base"],
-      "attributes": {
-        "level": {
-          "value": 1
+      "verbs": {
+        "coax": {
+          "value": 1,
+          "marked": false
+        },
+        "detect": {
+          "value": 1,
+          "marked": false
+        },
+        "fight": {
+          "value": 1,
+          "marked": false
+        },
+        "hack": {
+          "value": 1,
+          "marked": false
+        },
+        "move": {
+          "value": 1,
+          "marked": false
+        },
+        "operate": {
+          "value": 1,
+          "marked": false
+        },
+        "prowl": {
+          "value": 1,
+          "marked": false
+        },
+        "shoot": {
+          "value": 1,
+          "marked": false
+        },
+        "treat": {
+          "value": 1,
+          "marked": false
         }
       },
-      "abilities": {
-        "str": {
-          "value": 10
+      "adjectives": {
+        "a0": {
+          "polarity": 1,
+          "severity": 0,
+          "description": ""
         },
-        "dex": {
-          "value": 10
+        "a1": {
+          "polarity": 1,
+          "severity": 0,
+          "description": ""
         },
-        "con": {
-          "value": 10
+        "a2": {
+          "polarity": 1,
+          "severity": 0,
+          "description": ""
         },
-        "int": {
-          "value": 10
+        "a3": {
+          "polarity": 1,
+          "severity": 0,
+          "description": ""
         },
-        "wis": {
-          "value": 10
+        "a4": {
+          "polarity": 1,
+          "severity": 0,
+          "description": ""
         },
-        "cha": {
-          "value": 10
+        "a5": {
+          "polarity": 1,
+          "severity": 0,
+          "description": ""
+        },
+        "a6": {
+          "polarity": 1,
+          "severity": 0,
+          "description": ""
+        },
+        "a7": {
+          "polarity": 1,
+          "severity": 0,
+          "description": ""
+        },
+        "a8": {
+          "polarity": 1,
+          "severity": 0,
+          "description": ""
+        },
+        "a9": {
+          "polarity": -1,
+          "severity": 0,
+          "description": ""
+        },
+        "a10": {
+          "polarity": -1,
+          "severity": 0,
+          "description": ""
+        },
+        "a11": {
+          "polarity": -1,
+          "severity": 0,
+          "description": ""
+        },
+        "a12": {
+          "polarity": -1,
+          "severity": 0,
+          "description": ""
+        },
+        "a13": {
+          "polarity": -1,
+          "severity": 0,
+          "description": ""
+        },
+        "a14": {
+          "polarity": -1,
+          "severity": 0,
+          "description": ""
+        },
+        "a15": {
+          "polarity": -1,
+          "severity": 0,
+          "description": ""
+        },
+        "a16": {
+          "polarity": -1,
+          "severity": 0,
+          "description": ""
+        },
+        "a17": {
+          "polarity": -1,
+          "severity": 0,
+          "description": ""
         }
       }
     },
     "npc": {
-      "templates": ["base"],
-      "cr": 0
+      "templates": [
+        "base"
+      ]
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": [
+      "object",
+      "adjective",
+      "program",
+      "connection"
+    ],
     "templates": {
       "base": {
         "description": ""
       }
     },
-    "item": {
-      "templates": ["base"],
+    "object": {
+      "templates": [
+        "base"
+      ],
+      "tags": "",
       "quantity": 1,
       "weight": 0,
       "formula": "d20 + @str.mod + ceil(@lvl / 2)"
     },
-    "feature": {
-      "templates": ["base"]
+    "adjective": {
+      "templates": [
+        "base"
+      ],
+      "polarity": 1,
+      "rating": 0
     },
-    "spell": {
-      "templates": ["base"],
-      "spellLevel": 1
+    "program": {
+      "templates": [
+        "base"
+      ]
+    },
+    "connection": {
+      "templates": [
+        "base"
+      ],
+      "favors": "",
+      "debt": "",
+      "relationshipAdjective": ""
     }
   }
 }

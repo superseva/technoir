@@ -4,9 +4,13 @@ import { TechnoirItem } from "./documents/item.mjs";
 // Import sheet classes.
 import { TechnoirActorSheet } from "./sheets/actor-sheet.mjs";
 import { TechnoirItemSheet } from "./sheets/item-sheet.mjs";
+// Import Roller and Dialog
+import { TechnoirRoller } from "./roller/technoir_roller.js";
+import { TechnoirRollDialog } from "./roller/technoir_roll_dialog.js";
+import { DieAction, DiePush, DieHurt } from "./roller/Dice.js";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
-import { BOILERPLATE } from "./helpers/config.mjs";
+import { TECHNOIR } from "./helpers/config.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -19,11 +23,13 @@ Hooks.once('init', async function() {
   game.technoir = {
     TechnoirActor,
     TechnoirItem,
-    rollItemMacro
+    rollItemMacro,
+    TechnoirRoller,
+    TechnoirRollDialog
   };
 
   // Add custom constants for configuration.
-  CONFIG.BOILERPLATE = BOILERPLATE;
+  CONFIG.TECHNOIR = TECHNOIR;
 
   /**
    * Set an initiative formula for the system
@@ -37,6 +43,11 @@ Hooks.once('init', async function() {
   // Define custom Document classes
   CONFIG.Actor.documentClass = TechnoirActor;
   CONFIG.Item.documentClass = TechnoirItem;
+
+  // Define Dice
+  CONFIG.Dice.terms["a"] = DieAction;
+  CONFIG.Dice.terms["p"] = DiePush;
+  CONFIG.Dice.terms["h"] = DieHurt;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);

@@ -7,9 +7,10 @@
   return loadTemplates([
 
     // Actor partials.
-    "systems/technoir/templates/actor/parts/actor-features.html",
-    "systems/technoir/templates/actor/parts/actor-items.html",
-    "systems/technoir/templates/actor/parts/actor-spells.html",
+    "systems/technoir/templates/actor/parts/actor-adjectives.html",
+    "systems/technoir/templates/actor/parts/actor-objects.html",
+    "systems/technoir/templates/actor/parts/actor-programs.html",
+    "systems/technoir/templates/actor/parts/actor-connections.html",
     "systems/technoir/templates/actor/parts/actor-effects.html",
   ]);
 };

@@ -1,23 +1,23 @@
-export const BOILERPLATE = {};
+export const TECHNOIR = {};
 
 /**
  * The set of Ability Scores used within the sytem.
  * @type {Object}
  */
- BOILERPLATE.abilities = {
-  "str": "BOILERPLATE.AbilityStr",
-  "dex": "BOILERPLATE.AbilityDex",
-  "con": "BOILERPLATE.AbilityCon",
-  "int": "BOILERPLATE.AbilityInt",
-  "wis": "BOILERPLATE.AbilityWis",
-  "cha": "BOILERPLATE.AbilityCha"
+ TECHNOIR.abilities = {
+  "str": "TECHNOIR.AbilityStr",
+  "dex": "TECHNOIR.AbilityDex",
+  "con": "TECHNOIR.AbilityCon",
+  "int": "TECHNOIR.AbilityInt",
+  "wis": "TECHNOIR.AbilityWis",
+  "cha": "TECHNOIR.AbilityCha"
 };
 
-BOILERPLATE.abilityAbbreviations = {
-  "str": "BOILERPLATE.AbilityStrAbbr",
-  "dex": "BOILERPLATE.AbilityDexAbbr",
-  "con": "BOILERPLATE.AbilityConAbbr",
-  "int": "BOILERPLATE.AbilityIntAbbr",
-  "wis": "BOILERPLATE.AbilityWisAbbr",
-  "cha": "BOILERPLATE.AbilityChaAbbr"
+TECHNOIR.abilityAbbreviations = {
+  "str": "TECHNOIR.AbilityStrAbbr",
+  "dex": "TECHNOIR.AbilityDexAbbr",
+  "con": "TECHNOIR.AbilityConAbbr",
+  "int": "TECHNOIR.AbilityIntAbbr",
+  "wis": "TECHNOIR.AbilityWisAbbr",
+  "cha": "TECHNOIR.AbilityChaAbbr"
 };

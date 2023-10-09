@@ -1,22 +1,22 @@
 {
-  "BOILERPLATE.AbilityStr": "Strength",
-  "BOILERPLATE.AbilityCon": "Constitution",
-  "BOILERPLATE.AbilityDex": "Dexterity",
-  "BOILERPLATE.AbilityInt": "Intelligence",
-  "BOILERPLATE.AbilityWis": "Wisdom",
-  "BOILERPLATE.AbilityCha": "Charisma",
+  "TECHNOIR.AbilityStr": "Strength",
+  "TECHNOIR.AbilityCon": "Constitution",
+  "TECHNOIR.AbilityDex": "Dexterity",
+  "TECHNOIR.AbilityInt": "Intelligence",
+  "TECHNOIR.AbilityWis": "Wisdom",
+  "TECHNOIR.AbilityCha": "Charisma",
 
-  "BOILERPLATE.AbilityStrAbbr": "str",
-  "BOILERPLATE.AbilityConAbbr": "con",
-  "BOILERPLATE.AbilityDexAbbr": "dex",
-  "BOILERPLATE.AbilityIntAbbr": "int",
-  "BOILERPLATE.AbilityWisAbbr": "wis",
-  "BOILERPLATE.AbilityChaAbbr": "cha",
+  "TECHNOIR.AbilityStrAbbr": "str",
+  "TECHNOIR.AbilityConAbbr": "con",
+  "TECHNOIR.AbilityDexAbbr": "dex",
+  "TECHNOIR.AbilityIntAbbr": "int",
+  "TECHNOIR.AbilityWisAbbr": "wis",
+  "TECHNOIR.AbilityChaAbbr": "cha",
 
-  "BOILERPLATE.EffectCreate": "Create Effect",
-  "BOILERPLATE.EffectToggle": "Toggle Effect",
-  "BOILERPLATE.EffectEdit": "Edit Effect",
-  "BOILERPLATE.EffectDelete": "Delete Effect",
+  "TECHNOIR.EffectCreate": "Create Effect",
+  "TECHNOIR.EffectToggle": "Toggle Effect",
+  "TECHNOIR.EffectEdit": "Edit Effect",
+  "TECHNOIR.EffectDelete": "Delete Effect",
 
-  "BOILERPLATE.Add": "Add"
+  "TECHNOIR.Add": "Add"
 }

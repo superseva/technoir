@@ -13,7 +13,7 @@ export class TechnoirActorSheet extends ActorSheet {
       template: "systems/technoir/templates/actor/actor-sheet.html",
       width: 600,
       height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "adjectives" }]
     });
   }
 
@@ -68,9 +68,9 @@ export class TechnoirActorSheet extends ActorSheet {
    */
   _prepareCharacterData(context) {
     // Handle ability scores.
-    for (let [k, v] of Object.entries(context.system.abilities)) {
-      v.label = game.i18n.localize(CONFIG.BOILERPLATE.abilities[k]) ?? k;
-    }
+    // for (let [k, v] of Object.entries(context.system.abilities)) {
+    //   v.label = game.i18n.localize(CONFIG.TECHNOIR.abilities[k]) ?? k;
+    // }
   }
 
   /**
@@ -83,8 +83,8 @@ export class TechnoirActorSheet extends ActorSheet {
   _prepareItems(context) {
     // Initialize containers.
     const gear = [];
-    const features = [];
-    const spells = {
+    const adjectives = [];
+    const programs = {
       0: [],
       1: [],
       2: [],
@@ -104,22 +104,22 @@ export class TechnoirActorSheet extends ActorSheet {
       if (i.type === 'item') {
         gear.push(i);
       }
-      // Append to features.
-      else if (i.type === 'feature') {
-        features.push(i);
+      // Append to adjectives.
+      else if (i.type === 'adjective') {
+        adjectives.push(i);
       }
-      // Append to spells.
-      else if (i.type === 'spell') {
-        if (i.system.spellLevel != undefined) {
-          spells[i.system.spellLevel].push(i);
+      // Append to programs.
+      else if (i.type === 'program') {
+        if (i.system.programLevel != undefined) {
+          programs[i.system.programLevel].push(i);
         }
       }
     }
 
     // Assign and return
     context.gear = gear;
-    context.features = features;
-    context.spells = spells;
+    context.adjectives = adjectives;
+    context.programs = programs;
   }
 
   /* -------------------------------------------- */
